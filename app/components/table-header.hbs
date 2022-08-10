@@ -1,0 +1,6 @@
+<div class="m-3 d-flex justify-content-between">
+    <span style="font-weight: 800;font-size:larger;" >{{@title}}</span>
+    {{#if @onAdd}}
+        <button class="btn btn-outline-primary" type="button" {{on "click" @onAdd}} >Add +</button>
+    {{/if}}
+</div>

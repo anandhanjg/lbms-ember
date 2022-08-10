@@ -1,0 +1,53 @@
+.error{
+    color: #ff0000;
+    font-weight: 600;
+}
+
+.nav-item.active > a{
+    color: #ff0000 !important;
+}
+
+.card::before{
+    content: '';
+    width: 2%;
+    height: 100%;
+    left:0;
+    background-color: #ab5555;
+    position: absolute;
+}
+
+.book-code{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 6px;
+    background-color: #ab5555;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: smaller;
+    border-radius: 10px 0px 2px 0px;
+}
+
+.book-status{
+    font-weight: 700;
+    font-size: smaller;
+}
+.book-status-not-available{
+    color: #923a3a;
+}
+
+.book-status-available{
+    color: #09a009;
+}
+
+.search-msg{
+    margin-top: 50%;
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+    font-style: italic;
+}
+
+body{
+    height: 100vh !important;
+}

@@ -1,0 +1,82 @@
+<form {{on 'submit' this.onSubmit}}>
+<div class="modal fade" id="rent-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Rent</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="book-id">Book Id: </label>
+          </div>
+          <div class="col">
+            <Input id="book-id" name="book-id" class="form-control" @value={{@rent.bookId}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="user-id">UserId: </label>
+          </div>
+          <div class="col">
+            <Input id="user-id" name="user-id" class="form-control" @value={{@rent.userId}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="borrow-date">Borrow On: </label>
+          </div>
+          <div class="col">
+            <Input id="borrow-date" name="borrowDate" class="form-control" @type="date" @value={{@rent.borrowDate}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="due-date">Due Date: </label>
+          </div>
+          <div class="col">
+            <Input id="due-date" name="dueDate" class="form-control" @type="date" @value={{@rent.dueDate}} required/>
+          </div>
+        </div>
+        {{#if (eq @opt 'EDIT')}}
+            <div class="form-group row m-3">
+                <div class="col">
+                    <label for="returned">Book Returned?</label>
+                </div>
+                <div class="col">
+                    <div class="form-check form-switch">
+                        <Input class="form-check-input" @type="checkbox"  @checked={{@rent.returned}} />
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+        
+        {{#if @rent.returned}}
+            <div class="form-group row m-3"> 
+                <div class="col">
+                    <label for="returned-date">Returned Date: </label>
+                </div>
+                <div class="col">
+                    <Input id="returned-date" name="returnedDate" class="form-control" @type="date" @value={{@rent.returnedDate}} required/>
+                </div>
+            </div>
+        {{/if}}
+
+        
+        {{#if this.error}}
+          <div class="alert alert-danger mt-3" role="alert">{{this.error}}</div>
+        {{/if}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+        {{#if this.isSave}}
+          <button type="submit" class="btn btn-outline-primary">Save</button>
+        {{else}}
+          <button type="submit" class="btn btn-outline-primary">Update</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</form>

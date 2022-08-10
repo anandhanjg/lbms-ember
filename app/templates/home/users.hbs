@@ -1,0 +1,12 @@
+{{page-title "Users"}}
+
+<div class="container">
+<div class="container-body">
+    <TableHeader @title="Users" @onAdd={{this.openModalToSave}}></TableHeader>
+    <DTable @headers={{this.headers}} @onEdit={{this.openModalToEdit}} @onDelete={{this.deleteUser}} @dataList={{@model}}></DTable>
+</div>
+
+</div>
+
+<UserModal @user={{this.user}} @opt={{this.opt}}></UserModal>
+

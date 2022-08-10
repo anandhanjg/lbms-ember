@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" {{on "click" this.toggle}}>
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse {{if this.navCollapse "collapse"}}" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item {{if (eq this.navSelected 'books') 'active'}}">
+        <LinkTo @route="home" class="nav-link" {{on 'click' (fn this.selNav 'books')}} >Books</LinkTo>
+      </li>
+      <li class="nav-item {{if (eq this.navSelected 'rents') 'active'}}">
+        <LinkTo @route="home.rents" class="nav-link" {{on 'click' (fn this.selNav 'rents')}} >Rents</LinkTo>
+      </li>
+      <li class="nav-item {{if (eq this.navSelected 'users') 'active'}}">
+        <LinkTo @route="home.users" class="nav-link" {{on 'click' (fn this.selNav 'users')}}>Users</LinkTo>
+      </li>
+      <li class="nav-item {{if (eq this.navSelected 'admins') 'active'}}">
+        <LinkTo @route="home.admins" class="nav-link" {{on 'click' (fn this.selNav 'admins')}} >Admins</LinkTo>
+      </li>
+    </ul>
+  </div>
+  <div class="my-2 my-lg-0 m-3">
+    <button class="btn btn-outline-danger my-2 my-sm-0" type="button" {{on 'click' this.logout}} >Logout</button>
+  </div>
+</nav>
+

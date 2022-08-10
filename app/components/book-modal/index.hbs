@@ -1,0 +1,49 @@
+<form {{on 'submit' this.onSubmit}}>
+<div class="modal fade" id="book-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Book</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="book-id">Id: </label>
+          </div>
+          <div class="col">
+            <Input id="book-id" name="book-id" class="form-control" @value={{@book.bookId}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="book-name">Name: </label>
+          </div>
+          <div class="col">
+            <Input id="book-name" name="book-name" class="form-control" @value={{@book.name}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="book-author">Author: </label>
+          </div>
+          <div class="col">
+            <Input id="book-author" name="book-author" class="form-control" @value={{@book.author}} required/>
+          </div>
+        </div>
+        {{#if this.error}}
+          <div class="alert alert-danger mt-3" role="alert">{{this.error}}</div>
+        {{/if}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+        {{#if this.isSave}}
+          <button type="submit" class="btn btn-outline-primary">Save</button>
+        {{else}}
+          <button type="submit" class="btn btn-outline-primary">Update</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</form>

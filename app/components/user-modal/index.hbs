@@ -1,0 +1,57 @@
+<form {{on 'submit' this.onSubmit}}>
+<div class="modal fade" id="user-modal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="user-id">Id: </label>
+          </div>
+          <div class="col">
+            <Input id="user-id" name="user-id" class="form-control" @value={{@user.userId}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="user-name">Name: </label>
+          </div>
+          <div class="col">
+            <Input id="user-name" name="user-name" class="form-control" @value={{@user.name}} required/>
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="user-mobile">Mobile: </label>
+          </div>
+          <div class="col">
+            <Input id="user-mobile" @type="tel" pattern="[0-9]{10}" name="user-mobile" class="form-control" @value={{@user.mobile}} required />
+          </div>
+        </div>
+        <div class="form-group row m-3"> 
+          <div class="col">
+            <label for="user-email">Email: </label>
+          </div>
+          <div class="col">
+            <Input id="user-email" @type="email" name="user-email" class="form-control" @value={{@user.email}} required/>
+          </div>
+        </div>
+        {{#if this.error}}
+          <div class="alert alert-danger mt-3" role="alert">{{this.error}}</div>
+        {{/if}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Close</button>
+        {{#if this.isSave}}
+          <button type="submit" class="btn btn-outline-primary">Save</button>
+        {{else}}
+          <button type="submit" class="btn btn-outline-primary">Update</button>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</div>
+</form>

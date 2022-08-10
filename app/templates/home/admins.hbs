@@ -1,0 +1,10 @@
+{{page-title "Admins"}}
+<div class="container">
+<div class="container-body">
+    <TableHeader @title="Admins" @onAdd={{this.openModalToSave}}></TableHeader>
+    <DTable @headers={{this.headers}} @onEdit={{this.openModalToEdit}} @onDelete={{this.deleteAdmin}} @dataList={{@model}}></DTable>
+</div>
+</div>
+
+<AdminModal @admin={{this.admin}} @opt={{this.opt}} ></AdminModal>
+

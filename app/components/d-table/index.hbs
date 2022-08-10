@@ -1,0 +1,33 @@
+<table class="table table-bordered">
+        <thead>
+            <tr>
+                {{#each @headers as |header|}}
+                    <th>{{header.displayValue}}</th>
+                {{/each}}
+                {{#if this.visibleAction}}
+                    <th>Action</th>
+                {{/if}}
+            </tr>
+        </thead>
+        <tbody>
+            {{#each @dataList as |data|}}
+                <tr>
+                    {{#each @headers as |header|}}
+                        <td>{{get data header.key}}</td>
+                    {{/each}}
+                    {{#if this.visibleAction}}
+                        <td>
+                            {{#if @onEdit}}
+                                <a href="javascript:void(0);" {{on 'click' (fn @onEdit data)}}>edit</a>
+                            {{/if}}
+                            {{#if @onDelete}}
+                                <a href="javascript:void(0);" {{on 'click' (fn @onDelete data)}}>delete</a>
+                            {{/if}}
+                        </td>
+                    {{/if}}
+                </tr>
+            {{else}}
+                <tr><td colspan={{this.tdColsSpan}}><h6 style="text-align: center;">No Data Found !</h6></td></tr>
+            {{/each}}
+        </tbody>
+</table>
