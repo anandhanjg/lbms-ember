@@ -1,0 +1,43 @@
+{{page-title "Search"}}
+
+<div class="container">
+    <div class="container-body">
+        <h4 class="m-3" style="text-align: center;">Library Management System</h4>
+        <div class="m-3 d-flex justify-content-between">
+            <span style="font-weight: 800;font-size:larger;" >Book Search</span>
+            <form class="d-flex w-25" {{on 'submit' this.onSubmit}}>
+                <input class="form-control mr-sm-2" placeholder="id or name or author" aria-label="Search" type="search" {{on 'input' this.onChange}} required>
+                <button class="btn btn-outline-success m-2 my-2 my-sm-0" type="submit">Search</button>
+            </form>
+        </div>
+        <div class="container row">
+                {{#each this.books as |book|}}
+                        <div class="card m-3" style="width: 17rem;">
+                            <div class="card-body">
+                                <h6 class="card-title">Book Name: {{book.name}}</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">Author: {{book.author}}</h6>
+                                {{#if book.available}}
+                                    <span class="book-status">Book is <span class="book-status-available">Available</span> to pick. If you borrow you can keep the book for 30 days.</span>        
+                                {{else}}
+                                    <span class="book-status">Book is <span class="book-status-not-available">Not Available</span> to pick. It is borrowed by <span class="book-status-not-available">{{book.rent.user.name}}({{book.rent.user.userId}})</span> and shall be returned on <span class="book-status-not-available">{{dDate book.rent.dueDate}}</span>.</span>
+                                {{/if}}
+                                <span class="book-code">{{book.bookId}}</span>
+                            </div>
+                        </div>
+                {{else}}
+                    <span class="search-msg">
+                        {{this.message}}
+                    </span>
+                {{/each}}
+                
+                {{!-- <div class="card m-3" style="width: 18rem;">
+                    <div class="card-body">
+                        <h6 class="card-title">Book Name: Game of Thrones</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Author: xyz</h6>
+                        
+                        <span class="book-code">GOT123</span>
+                    </div>
+                </div> --}}
+        </div>
+    </div>
+</div>
